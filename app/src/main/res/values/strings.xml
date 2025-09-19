@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FastCampus</string>
+    <string name="email">Please Input Your Email</string>
+    <string name="password">Please Input Your Password</string>
+</resources>
