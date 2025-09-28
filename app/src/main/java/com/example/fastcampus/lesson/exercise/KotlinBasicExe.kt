@@ -1,4 +1,4 @@
-package com.example.fastcampus.lesson
+package com.example.fastcampus.lesson.exercise
 
 fun guestEvenOddNumber(number: Int) {
     if (number % 2 == 0) {
