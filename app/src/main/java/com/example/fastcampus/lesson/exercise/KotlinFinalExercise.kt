@@ -13,10 +13,11 @@ fun defineTheGradeOfNumber(numberList: MutableList<Int>) {
 
 fun findListOfDiscountedPrice(amountList: MutableList<Double>) {
     val discount = 0.1
+    val amount = amountList.filter { it * discount <= 20000.0 }
+    println("Hasil dengan filter $amount")
     for (price in amountList) {
-        if (price <= 20000) {
-            val result = price - (price * discount)
-            println("Total: " + result)
+        if (price * discount <= 20000.0) {
+            println("hasil dengan for: $price")
         }
     }
 }
@@ -33,7 +34,7 @@ fun showDataBasedOnType(firstData: Any) {
 }
 
 fun main() {
-//    defineTheGradeOfNumber(mutableListOf(80, 90, 70))
-//    findListOfDiscountedPrice(mutableListOf(10000.0, 15000.0, 30000.0))
+    defineTheGradeOfNumber(mutableListOf(80, 90, 70, 20))
+    findListOfDiscountedPrice(mutableListOf(10000.0, 15000.0, 30000.0, 500000.0))
     showDataBasedOnType(true)
 }
