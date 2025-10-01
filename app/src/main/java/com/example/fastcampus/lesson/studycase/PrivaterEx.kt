@@ -2,23 +2,25 @@ package com.example.fastcampus.lesson.studycase
 
 import android.health.connect.datatypes.units.Length
 
-class RectangleClass(
-    length: Int,
-    height: Int,
-) {
-    val result = (length * height) / 2
-}
+data class FruitShelf(
+    val id: Int,
+    val name: String,
+    val price: Int,
+    val stock: Int,
+)
 
-fun rectangleFun(
-    length: Int,
-    height: Int,
-) {
-    val result = (length * height) / 2
-    println("Hasil dengan fun $result")
-}
+val fruits =
+    listOf<FruitShelf>(
+        FruitShelf(1, "Apple", 10000, 7),
+        FruitShelf(2, "Banana", 15000, 12),
+        FruitShelf(3, "Grape", 25000, 20),
+        FruitShelf(4, "Cherry", 50000, 40),
+    )
 
 fun main() {
-    val useClass = RectangleClass(20, 2)
-    println("Hasil dgn class ${useClass.result} ")
-    rectangleFun(20, 2)
+    for (i in fruits) {
+        if (i.stock < 20) {
+            println("Nama ${i.name} dan stok ${i.stock}")
+        }
+    }
 }
