@@ -19,7 +19,7 @@ val fruits =
 
 fun main() {
     for (i in fruits) {
-        if (i.stock < 20) {
+        if (i.name == "Grape") {
             println("Nama ${i.name} dan stok ${i.stock}")
         }
     }

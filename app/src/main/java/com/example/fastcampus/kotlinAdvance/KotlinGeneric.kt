@@ -1,4 +1,4 @@
-package com.example.fastcampus.lesson.kotlinAdvance
+package com.example.fastcampus.kotlinAdvance
 
 fun <T> genericFun(dataList: List<T>) {
     for (i in dataList) {

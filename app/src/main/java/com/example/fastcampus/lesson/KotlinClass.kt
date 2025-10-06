@@ -8,7 +8,7 @@ class NormalClass {
     }
 }
 
-class DataClass(
+data class DataClass(
     val name: String, // class yg berguna u/ mengirim data
 )
 
