@@ -1,5 +1,6 @@
 package com.example.fastcampus.kotlinAdvance
 
+// kotlin generic -> fun atau class yg mampu menampung banyak tipe data
 fun <T> genericFun(dataList: List<T>) {
     for (i in dataList) {
         println(i)
