@@ -3,10 +3,12 @@ package com.example.fastcampus.kotlinAdvance.exercise
 fun <T> isGreaterThan(
     value: T,
     value2: T,
-): Boolean {
-    val result = value.toString() > value2.toString()
-    return result
-}
+): Boolean =
+    when {
+        value is Int && value2 is Int -> value > value2 as Int
+        value is Double && value2 is Double -> value > value2 as Double
+        else -> false
+    }
 
 /*
 *2.  Buatlah sebuah fun extension tipe data Int u/ check bilangan merupakan kelipatan dari bilangan lainnya
@@ -21,21 +23,21 @@ fun Int.isMultiplicationOf(number: Int): Boolean = this % number == 0
 
 infix fun Double.calculateDiscount(discount: Double): Double = this - (this * discount / 100)
 
-sealed class StatusResource {
+sealed class StatusResource<T> {
     data class Success<T>(
         val data: T,
-    ) : StatusResource()
+    ) : StatusResource<T>()
 
     data class Error<T>(
         val data: T,
-    ) : StatusResource()
+    ) : StatusResource<T>()
 
-    object Loading : StatusResource()
+    object Loading : StatusResource<Nothing>()
 }
 
 fun main() {
     println(isGreaterThan(10.0, 20.0))
     println(100.isMultiplicationOf(5))
     println(100000.0 calculateDiscount 5.0)
-    println(StatusResource.Error(400).data)
+    println(StatusResource.Error("Error server").data)
 }
