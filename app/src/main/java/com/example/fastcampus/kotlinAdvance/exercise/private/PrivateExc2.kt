@@ -1,13 +1,28 @@
 package com.example.fastcampus.kotlinAdvance.exercise.private
 
-fun countVowel(input: String) {
-    for (index in input.indices) {
-        when (input[index]) {
-            'a', 'i', 'u', 'e', 'o' -> println("${input[index]} is vowel")
-        }
-    }
+abstract class Vehicle(
+    var distance: Int,
+) {
+    abstract fun calculateCost(): Double
+}
+
+class Truck(
+    distance: Int,
+) : Vehicle(distance) {
+    override fun calculateCost(): Double = distance * 5000.0
+}
+
+class Motorcycle(
+    distance: Int,
+) : Vehicle(distance) {
+    override fun calculateCost(): Double = distance * 2000.0
 }
 
 fun main() {
-    countVowel("Halo Dunia")
+    val newTruck = Truck(80)
+    val newMotor = Motorcycle(10)
+    val cost = newTruck.calculateCost()
+    val cost2 = newMotor.calculateCost()
+    println("Cost: $cost")
+    println("Cost: $cost2")
 }

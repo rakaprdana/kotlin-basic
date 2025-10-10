@@ -1,7 +1,7 @@
 package com.example.fastcampus.kotlinAdvance
 
 open class Vehicle {
-    protected var wheels: Int = 0
+    protected var wheels: Int = 0 // atribut/properti
 
     fun showWheelsOfVehicle() {
         println("This vehicle have $wheels wheels")
