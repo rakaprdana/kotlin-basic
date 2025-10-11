@@ -1,5 +1,7 @@
 package com.example.fastcampus.kotlinAdvance.exercise
 
+import kotlin.math.min
+
 /**
  * 1. Buatlah sebuah kelas bernama Makanan, Minuman, Pesanan dan Pelanggan
  * 2. Buatlah properti masing2 kelas tersebut
@@ -16,43 +18,46 @@ package com.example.fastcampus.kotlinAdvance.exercise
  *Total Pesanan= Rp100000
  * **/
 
-abstract class Produk {
-    abstract var nama: String
-    abstract var harga: Int
+abstract class Product {
+    abstract val name: String
+    abstract val price: Int
 }
 
-class Makanan(
-    override var nama: String,
-    override var harga: Int,
-) : Produk()
+class Foods(
+    override val name: String,
+    override val price: Int,
+) : Product()
 
-class Minuman(
-    override var nama: String,
-    override var harga: Int,
-) : Produk()
+class Drinks(
+    override val name: String,
+    override val price: Int,
+) : Product()
 
-class Pesanan {
-    var makanan = Makanan("Bebek Goreng", 45000)
-    var minuman = Minuman("Es teh", 10000)
-
-    fun sumHarga(): Int = makanan.harga + minuman.harga
+class Orders(
+    val foods: Foods,
+    val drinks: Drinks,
+) {
+    fun getTotal(): Int = foods.price + drinks.price
 }
 
-class Pelanggan {
-    var nama: String = "Raka"
-    val pesanan = Pesanan()
-
-    fun showName() {
-        println("Pelanggan: $nama")
+class User(
+    val nameUser: String,
+    val orders: Orders,
+) {
+    fun showUser() {
+        println("Consument: $nameUser")
     }
 
-    fun showTotalHarga() {
-        println("Total harga: Rp.${pesanan.sumHarga()}")
+    fun showTotal() {
+        println("Your total is: ${orders.getTotal()}")
     }
 }
 
 fun main() {
-    val newUser = Pelanggan()
-    newUser.showName()
-    newUser.showTotalHarga()
+    val newFood = Foods("Ayam Geprek", 14000)
+    val newDrink = Drinks("Es teh", 5000)
+    val newOrder = Orders(newFood, newDrink)
+    val newUser = User("Raka", newOrder)
+    newUser.showUser()
+    newUser.showTotal()
 }
