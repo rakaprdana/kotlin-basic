@@ -17,27 +17,42 @@ package com.example.fastcampus.kotlinAdvance.exercise
  * **/
 
 abstract class Produk {
-    var nama: String = ""
-    var harga: Int = 0
+    abstract var nama: String
+    abstract var harga: Int
 }
 
-object Makanan : Produk()
+class Makanan(
+    override var nama: String,
+    override var harga: Int,
+) : Produk()
 
-object Minuman : Produk()
+class Minuman(
+    override var nama: String,
+    override var harga: Int,
+) : Produk()
 
 class Pesanan {
-    open fun totalHarga(
-        pesanan1: Makanan,
-        pesanan2: Minuman,
-    ): Int = pesanan1.harga + pesanan2.harga
+    var makanan = Makanan("Bebek Goreng", 45000)
+    var minuman = Minuman("Es teh", 10000)
+
+    fun sumHarga(): Int = makanan.harga + minuman.harga
 }
 
 class Pelanggan {
-    var namaPelanggan: String = ""
-    var total = Pesanan().totalHarga()
+    var nama: String = "Raka"
+    val pesanan = Pesanan()
 
-    fun cetakStruk(namaPelanggan: Pelanggan) {
-        println("nama: $namaPelanggan")
-        println("Total")
+    fun showName() {
+        println("Pelanggan: $nama")
     }
+
+    fun showTotalHarga() {
+        println("Total harga: Rp.${pesanan.sumHarga()}")
+    }
+}
+
+fun main() {
+    val newUser = Pelanggan()
+    newUser.showName()
+    newUser.showTotalHarga()
 }
